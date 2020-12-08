@@ -1,10 +1,13 @@
-var VideoList = (props) => (
+import VideoListEntry from './VideoListEntry.js';
+
+var VideoList = (props) => ( // props = {videos: []}
   <div className="video-list col-md-5">
-    <div><h5><em>{props.videos[0].snippet.title}</em> <img className="media-object" src={props.videos[0].snippet.thumbnails.default.url} alt="" /></h5></div>
+    {/* <div><h5><em>{props.videos[0].snippet.title}</em> <img className="media-object" src={props.videos[0].snippet.thumbnails.default.url} alt="" /></h5></div>
     <div><h5><em>{props.videos[1].snippet.title}</em> view goes here</h5></div>
     <div><h5><em>{props.videos[2].snippet.title}</em> view goes here</h5></div>
     <div><h5><em>{props.videos[3].snippet.title}</em> view goes here</h5></div>
-    <div><h5><em>{props.videos[4].snippet.title}</em> view goes here</h5></div>
+    <div><h5><em>{props.videos[4].snippet.title}</em> view goes here</h5></div> */}
+    {props.videos.map((item, key) => <VideoListEntry video={item} key={key}/>)}
   </div>
 );
 
