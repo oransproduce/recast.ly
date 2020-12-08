@@ -1,10 +1,10 @@
-var VideoList = () => (
-  <div className="video-list">
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
-    <div><h5><em>videoListEntry</em> view goes here</h5></div>
+var VideoList = (props) => (
+  <div className="video-list col-md-5">
+    <div><h5><em>{props.videos[0].snippet.title}</em> <img className="media-object" src={props.videos[0].snippet.thumbnails.default.url} alt="" /></h5></div>
+    <div><h5><em>{props.videos[1].snippet.title}</em> view goes here</h5></div>
+    <div><h5><em>{props.videos[2].snippet.title}</em> view goes here</h5></div>
+    <div><h5><em>{props.videos[3].snippet.title}</em> view goes here</h5></div>
+    <div><h5><em>{props.videos[4].snippet.title}</em> view goes here</h5></div>
   </div>
 );
 
