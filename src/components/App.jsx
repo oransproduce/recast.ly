@@ -1,5 +1,6 @@
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
+import exampleVideoData from './data/exampleVideoData.js';
 
 //let vidlist = <VideoList list={exampleVideoData}/>;
 
@@ -8,8 +9,8 @@ class App extends React.Component { //<App videos = {exampleVideoList}/>
     super(props);
 
     this.state = {
-      videoList: this.props.videos,
-      current: this.props.videos[0]
+      videoList: exampleVideoData,
+      current: exampleVideoData[0]
     };
   }
 

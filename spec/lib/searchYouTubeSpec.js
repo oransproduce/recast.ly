@@ -42,6 +42,7 @@ describe('searchYouTube', function() {
   // letting us synchronously inspect any request made by `searchYouTube`
 
   beforeEach(function() {
+    debugger;
     requests = [];
     xhr = sinon.useFakeXMLHttpRequest();
     xhr.onCreate = function(req) { requests.push(req); };
@@ -54,13 +55,19 @@ describe('searchYouTube', function() {
   });
 
   it('should send a GET request', function() {
-    searchYouTube({}, () => {});
-
+    requests = [];
+    xhr = sinon.useFakeXMLHttpRequest();
+    xhr.onCreate = function(req) { requests.push(req); };
+    searchYouTube({}, () => {}, () => console.log('failed 56 test'));
+    // debugger;
     expect(requests[0].method).to.equal('GET');
   });
 
   it('should accept `key`, `query`, and `max` options and send them in GET request', function() {
-    searchYouTube({ key: 'API_KEY', query: 'cats', max: 10 }, () => {});
+    requests = [];
+    xhr = sinon.useFakeXMLHttpRequest();
+    xhr.onCreate = function(req) { requests.push(req); };
+    searchYouTube({ key: 'API_KEY', query: 'cats', max: 10 }, () => {}, () => console.log('failed 63'));
 
     var params = getURLSearchParams(requests[0].url);
     expect(params.key).to.equal('API_KEY');
