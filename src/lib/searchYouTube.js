@@ -12,7 +12,7 @@ var searchYouTube = (options, callback, error) => {
       videoEmbeddable: true
     },
     success: function(data) {
-      callback(data);
+      callback(data.items);
     },
     error: error
     // error: function(response) {

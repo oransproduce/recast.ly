@@ -17,7 +17,7 @@ var hasSameShape = function(objectOne, objectTwo) {
   if (Object.keys(objectOne).length !== Object.keys(objectTwo).length) {
     return false;
   }
-
+  //debugger;
   for (var key in objectOne) {
     if (!key in objectTwo) {
       return false;
@@ -42,7 +42,6 @@ describe('searchYouTube', function() {
   // letting us synchronously inspect any request made by `searchYouTube`
 
   beforeEach(function() {
-    debugger;
     requests = [];
     xhr = sinon.useFakeXMLHttpRequest();
     xhr.onCreate = function(req) { requests.push(req); };
@@ -55,19 +54,12 @@ describe('searchYouTube', function() {
   });
 
   it('should send a GET request', function() {
-    requests = [];
-    xhr = sinon.useFakeXMLHttpRequest();
-    xhr.onCreate = function(req) { requests.push(req); };
-    searchYouTube({}, () => {}, () => console.log('failed 56 test'));
-    // debugger;
+    searchYouTube({}, () => {});
     expect(requests[0].method).to.equal('GET');
   });
 
   it('should accept `key`, `query`, and `max` options and send them in GET request', function() {
-    requests = [];
-    xhr = sinon.useFakeXMLHttpRequest();
-    xhr.onCreate = function(req) { requests.push(req); };
-    searchYouTube({ key: 'API_KEY', query: 'cats', max: 10 }, () => {}, () => console.log('failed 63'));
+    searchYouTube({ key: 'API_KEY', query: 'cats', max: 10 });
 
     var params = getURLSearchParams(requests[0].url);
     expect(params.key).to.equal('API_KEY');
@@ -87,6 +79,7 @@ describe('searchYouTube', function() {
     // We want this test to make a real AJAX request
     xhr.restore();
 
+    // debugger;
     searchYouTube(options, (data) => {
       expect(hasSameShape(data, exampleVideoData)).to.be.true;
       done();
