@@ -1,6 +1,7 @@
 import VideoList from './VideoList.js';
 import VideoPlayer from './VideoPlayer.js';
 import exampleVideoData from '../data/exampleVideoData.js';
+import YOUTUBE_API_KEY from '../config/youtube.js';
 
 //let vidlist = <VideoList list={exampleVideoData}/>;
 
@@ -19,7 +20,22 @@ class App extends React.Component { //<App videos = {exampleVideoList}/>
       current: movie
     });
   }
+  componentDidMount() {
+    let options = {
+      key: YOUTUBE_API_KEY,
+      max: 5,
+      query: 'react'
+    };
 
+    let temp = [];
+    debugger;
+    this.props.searchYouTube(options, (data) => temp = temp.concat(data));
+
+    this.setState({
+      videoList: temp,
+      current: exampleVideoData[0]
+    });
+  }
   render() {
     return (
       <div>

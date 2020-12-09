@@ -1,5 +1,5 @@
 
-var searchYouTube = (options, callback, error) => {
+var searchYouTube = (options, callback) => {
   $.ajax({
     type: 'GET',
     url: 'https://www.googleapis.com/youtube/v3/search',
@@ -12,12 +12,12 @@ var searchYouTube = (options, callback, error) => {
       videoEmbeddable: true
     },
     success: function(data) {
+      debugger;
       callback(data.items);
     },
-    error: error
-    // error: function(response) {
-    //   console.log('Request Failed');
-    // }
+    error: function(response) {
+      console.log('Request Failed');
+    }
 
   });
 };
