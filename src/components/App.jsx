@@ -24,17 +24,19 @@ class App extends React.Component { //<App videos = {exampleVideoList}/>
     let options = {
       key: YOUTUBE_API_KEY,
       max: 5,
-      query: 'react'
+      query: 'surfing'
     };
 
-    let temp = [];
+    let context = this;
     debugger;
-    this.props.searchYouTube(options, (data) => temp = temp.concat(data));
-
-    this.setState({
-      videoList: temp,
-      current: exampleVideoData[0]
+    this.props.searchYouTube(options, (data) => {
+      context.setState({
+        videoList: data,
+        current: data[0]
+      });
     });
+
+
   }
   render() {
     return (
